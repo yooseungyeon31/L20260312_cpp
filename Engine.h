@@ -56,6 +56,7 @@ void Render();
 void Gotoxy(int x, int y);
 
 void Clear();
+void AddPlayerOffset(int DeltaX, int DeltaY);
 
 
 
