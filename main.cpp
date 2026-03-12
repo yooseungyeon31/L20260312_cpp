@@ -35,39 +35,56 @@ using namespace std;
 //--------------------------------------------------
 //포인터 heap으로
 
+void init(int* Ball, int Size)
+{
+	for (int i = 0; i < Size; i++)
+	{
+		Ball[i] = i + 1;
+	}
+	srand((unsigned int)time(nullptr));
+}
+
+void Shuffle(int* Ball, int Size)
+{
+	
+
+	for (int i = 0; i < Size * 10; i++)
+	{
+		int FirstIndex = rand() % Size;
+		int SecondIndex = rand() % Size;
+		int Temp = Ball[FirstIndex];
+
+		Ball[FirstIndex] = Ball[SecondIndex];
+		Ball[SecondIndex] = Temp;
+	}
+}
+
+
+void Random(int* Ball, int Size)
+{
+
+	for (int i = 0; i < Size; i++)
+	{
+		cout << Ball[i] << " ";
+	}
+}
+
 int main()
 {
 	int Size = 45;
-
+	int SelectBall = 6;
 	int* Ball = new int[Size];
 
 	
 
-	srand((unsigned int)time(NULL));
-
+	
 	cout << "랜덤으로 6개를 뽑습니다" << endl;
+	init(Ball, Size);
+	Shuffle(Ball, Size);
+	Random(Ball, SelectBall);
 
 
-	for (int i = 0; i < 6; i++)
-	{
-		Ball[i] = (rand() % 45)+1;
-
-		for (int j = 0; j < i; j++)
-		{
-			if (Ball[i] == Ball[j])
-			{
-				i--;
-				break;
-			}
-		}
-
-	}
-
-	for (int i = 0; i < 6; i++)
-	{
-		cout << Ball[i] << " ";
-	}
-	cout << endl;
+	
 
 	delete[] Ball;
 	Ball = nullptr;
@@ -75,3 +92,5 @@ int main()
 
 	return 0;
 }
+
+
